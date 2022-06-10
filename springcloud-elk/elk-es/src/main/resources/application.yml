@@ -1,0 +1,31 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: elk-es
+  data:
+    elasticsearch:
+      # 指定elasticsearch集群地址
+      cluster-name: elasticsearch-cluster
+      cluster-nodes: 192.168.80.130:9300
+  kafka:
+    bootstrap-servers: 192.168.80.130:9092
+
+  redis:
+    host: 114.55.34.44
+    port: 6379
+    password: root
+    timeout: 2000
+    jedis:
+      pool:
+        maxActive: 300
+        maxIdle: 100
+        maxWait: 1000
+    # 服务或应用名
+    sysName: admin
+    enable: true
+    database: 0
+
+kafka:
+  topic: my_log

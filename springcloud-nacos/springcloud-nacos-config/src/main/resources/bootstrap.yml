@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: nacosConfig
+  cloud:
+    nacos:
+      config:
+        file-extension: properties
+        group: DEFAULT_GROUP
+        server-addr: 114.55.34.44:8848
+      discovery:
+        server-addr: 114.55.34.44:8848
+#  profiles:
+#    active: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

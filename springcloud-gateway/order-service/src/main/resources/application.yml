@@ -1,0 +1,44 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: order-service
+
+  cloud:
+    consul:
+      # 指定consul的ip地址和端口
+      host: 192.168.80.110
+      port: 8500
+      discovery:
+        # 指定服务版本信息
+        tags: version=1.0,auth=Mr.Kong
+        # 是否需要注册到consul，默认为true
+        register: true
+        # 注册的实例ID (唯一标志)
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}
+        # 服务名称
+        service-name: ${spring.application.name}
+        # 服务请求端口
+        port: ${server.port}
+        # 指定开启ip地址注册
+        prefer-ip-address: true
+        # 当前服务请求ip
+        ip-address: ${spring.cloud.client.ip-address}
+        # 指定consul心跳检测地址
+        health-check-url: http://${spring.cloud.client.ip-address}:${server.port}/actuator/health
+        # 指定consul心跳检测间隔
+        health-check-interval: 15s
+
+
+# 管理endpoints端点详细信息
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #暴露所有节点
+    health:
+      sensitive: false #关闭过滤敏感信息
+  endpoint:
+    health:
+      show-details: ALWAYS  #显示详细信息

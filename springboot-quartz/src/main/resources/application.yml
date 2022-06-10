@@ -1,0 +1,31 @@
+server:
+  port: 5000
+mybatis:
+  mapper-locations: classpath*:mappings/*.xml
+  type-aliases-package: com.example.quartz.model
+spring:
+  datasource:
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    driverClassName: com.mysql.jdbc.Driver
+    filters: stat
+    initialSize: 5
+    maxActive: 20
+    maxPoolPreparedStatementPerConnectionSize: 20
+    maxWait: 60000
+    minEvictableIdleTimeMillis: 300000
+    minIdle: 5
+    poolPreparedStatements: true
+    testOnBorrow: false
+    testOnReturn: false
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 60000
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://114.55.34.44/quartz?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+    validationQuery: SELECT 1 FROM DUAL
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true

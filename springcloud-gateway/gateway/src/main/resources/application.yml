@@ -1,0 +1,168 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: service-gateway
+
+  cloud:
+    consul:
+      # 指定consul的ip地址和端口
+      host: 192.168.80.110
+      port: 8500
+      discovery:
+        # 指定服务版本信息
+        tags: version=1.0,auth=Mr.Kong
+        # 是否需要注册到consul，默认为true
+        register: true
+        # 注册的实例ID (唯一标志)
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}
+        # 服务名称
+        service-name: ${spring.application.name}
+        # 服务请求端口
+        port: ${server.port}
+        # 指定开启ip地址注册
+        prefer-ip-address: true
+        # 当前服务请求ip
+        ip-address: ${spring.cloud.client.ip-address}
+        # 指定consul心跳检测地址
+        health-check-url: http://${spring.cloud.client.ip-address}:${server.port}/actuator/health
+        # 指定consul心跳检测间隔
+        health-check-interval: 15s
+
+    gateway:
+      discovery:
+        locator:
+          # 开启服务注册和发现功能
+          enabled: true
+          # 请求路径上的服务名配置为小写（因为服务注册的时候，向注册中心注册时将服务名转成大写的了）
+          lower-case-service-id: true
+      routes:
+        # 通过请求路径匹配
+#        - id: order-service
+#          uri: lb://order-service
+#          predicates:
+#            - Path=/consumer/**
+#            - Method=GET
+#          filters:
+#            # consumer/oder/info自动转换请求路径为service-consumer/order/info
+#            - StripPrefix=1
+
+        # 添加指定参数
+#        - id: paramter_route
+#          uri: http://localhost:9000/order/getParamter
+#          predicates:
+#            - Method=GET
+#          filters:
+#            # 在指定映射路径的请求都会获取到该参数
+#            - AddRequestParameter=name,Mr.Kong
+
+        # 通过header匹配
+#        - id: head_route
+#          uri: http://www.baidu.com
+#          predicates:
+#            - Header=X-Request-Id, \d+
+#            - Method=GET
+
+        # 通过Host匹配
+#        - id: host_route
+#          uri: http://www.baidu.com
+#          predicates:
+#            - Host=**.baidu.com
+
+        # 通过请求方式路由
+#        - id: method_route
+#          uri: http://www.baidu.com
+#          predicates:
+#            - Method=GET
+
+        # hystrix路由
+#        - id: hystrix_route
+#          uri: lb://order-service
+#          predicates:
+#          - Path=/consumer/**
+#          filters:
+#          - StripPrefix=1
+#          - RewritePath=/consumer/(?<path>.*), /$\{path}
+#          - name: Hystrix
+#            args:
+#              name: fallbackcmd
+#              fallbackUri: forward:/fallback/order
+
+        # 重试机制
+#        - id: retry_route
+#          uri: lb://order-service
+#          predicates:
+#            - Path=/consumer/**
+#          filters:
+#            - StripPrefix=1
+#            - name: Retry
+#              args:
+#                # 重试次数，默认为三次
+#                retries: 3
+#                # HTTP返回状态码
+#                status: 503
+#                # 指定哪些方法需要执行重试逻辑
+#                methods: GET
+#                # 一些列的状态码配置，取值参考：org.springframework.http.HttpStatus.Series。符合的某段状态码才会进行重试逻辑，默认值是 SERVER_ERROR，值是 5，也就是 5XX(5 开头的状态码)，共有5个
+#                series: SERVER_ERROR
+
+        # redis限流
+        - id: rate_limit_route
+          uri: lb://order-consumer
+          predicates:
+            - Path=/consumer/**
+          filters:
+            - StripPrefix=1
+            - name: RequestRateLimiter
+              args:
+                # 用于限流的解析器的Bean对象的名字。它使用SpEL表达式#{@beanName}从Spring容器中获取bean对象
+                key-resolver: "#{@hostAddrKeyResolver}"
+                # 令牌通每秒填充平均速率
+                redis-rate-limiter.replenishRate: 1
+                # 令牌桶的总容量
+                redis-rate-limiter.burstCapacity: 3
+
+      # 允许来自https://docs.spring.io的get请求进行访问,并且表明服务器允许请求头中携带字段Content-Type
+#      globalcors:
+#        corsConfigurations:
+#          '[/**]':
+#            allowedOrigins: "https://docs.spring.io"
+#            allowedMethods:
+#            - GET
+#            allowHeaders:
+#            - Content-Type
+
+      # 允许跨域
+      globalcors:
+          corsConfigurations:
+            '[/**]':
+              allowedOrigins: "*"
+              allowedMethods: "*"
+
+# 配置redis链接信息
+  redis:
+    host: 114.55.34.44
+    port: 6379
+    password: root
+
+# 超时时间，若不设置超时时间则有可能无法触发熔断
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+
+# 管理endpoints端点详细信息
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #暴露所有节点
+    health:
+      sensitive: false #关闭过滤敏感信息
+  endpoint:
+    health:
+      show-details: ALWAYS  #显示详细信息

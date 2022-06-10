@@ -1,0 +1,12 @@
+# 防盗链密码
+fastdfs:
+  http_secret_key: FastDFS1234567890
+
+# 香港文件服务器访问域名
+hk:
+  base:
+    url: http://image.zjyuyue.com
+
+# 端口
+server:
+  port: 8000

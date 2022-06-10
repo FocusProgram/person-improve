@@ -1,0 +1,32 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
+server:
+  port: 8667
+spring:
+  application:
+    name: tx-client-a
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 114.55.34.44:8848
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+    password: root
+    url: jdbc:mysql://114.55.34.44:3306/txlcn-demo?characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+tx-lcn:
+  client:
+    manager-address: 114.55.34.44:8070 #指定TM端口
+  ribbon:
+    loadbalancer:
+      dtx:
+        enabled: true                  #开启启动LCN负载均衡策略

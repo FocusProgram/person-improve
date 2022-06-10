@@ -1,0 +1,9 @@
+eureka:
+  client:
+    fetchRegistry: false #自己提供服务，所有设置为false
+    registerWithEureka: false #不需要去检索服务，所有设置为false
+server:
+  port: 9000
+spring:
+  application:
+    name: discovery-eureka

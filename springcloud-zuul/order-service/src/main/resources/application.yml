@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: order-service
+  redis:
+    host: 114.55.34.44
+    password: root
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 114.55.34.44:8848
+
+eureka:
+  client:
+    fetchRegistry: true #注册到别的服务，所有设置为true
+    registerWithEureka: true #需要去检索服务，所有设置为true
+    service-url:
+      defaultZone: http://localhost:9000/eureka #服务注册中心的配置内容，指定服务注册中心的位置
+  #  instance:
+  #    hostname: eureka-provider
+  #    prefer-ip-address: true #以ip地址注册到服务中心（单节点部署为分布式Eureka集群，禁止设置为true）
+  server:
+    enable-self-preservation: false #是否开启自我保护模式
+    eviction-interval-timer-in-ms: 60000 #服务注册表清理间隔（单位：毫秒，默认60*1000）
+
+server:
+  port: 8081

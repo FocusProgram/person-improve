@@ -1,0 +1,14 @@
+server:
+  port: 9100
+spring:
+  application:
+    name: zipkin-consumer
+  # \u6307\u5B9Azipkin\u7684\u5730\u5740
+  zipkin:
+    base-url: http://114.55.34.44:9400
+    #base-url: http://localhost:9411
+  # \u9ED8\u8BA4sleuth\u6536\u96C6\u4FE1\u606F\u7684\u6BD4\u7387\u662F0.1
+  sleuth:
+    sampler:
+      percentage: 1
+

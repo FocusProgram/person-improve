@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: gateway-zuul
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 114.55.34.44:8848
+
+eureka:
+  client:
+    fetchRegistry: true #注册到别的服务，所有设置为true
+    registerWithEureka: true #需要去检索服务，所有设置为true
+    service-url:
+      defaultZone: http://localhost:9000/eureka #服务注册中心的配置内容，指定服务注册中心的位置
+  #  instance:
+  #    hostname: eureka-provider
+  #    prefer-ip-address: true #以ip地址注册到服务中心（单节点部署为分布式Eureka集群，禁止设置为true）
+  server:
+    enable-self-preservation: false #是否开启自我保护模式
+    eviction-interval-timer-in-ms: 60000 #服务注册表清理间隔（单位：毫秒，默认60*1000）
+
+server:
+  port: 8080
+
+zuul:
+  # 前缀，可以用来做版本控制
+  prefix: /v1
+  # 禁用默认路由，执行配置的路由
+  ignored-services: "*"
+  routes:
+    # 指定路由名称
+    order:
+      # 指定路由访问路径
+      path: /order/**
+      # 指定向下游服务转发请求头中携带的信息，例如head:tx-token
+      sensitiveHeaders:
+      # 自定义路由指向服务id
+      serviceId: order-service
+    # 路由排除访问路径
+    ignored-patterns:
+      - /order/getFilter/*
+  # 添加代理头
+  add-proxy-headers: true
+

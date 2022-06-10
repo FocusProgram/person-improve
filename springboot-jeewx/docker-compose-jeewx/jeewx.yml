@@ -1,0 +1,37 @@
+version: '2'
+services:
+  web:
+    image: org.jeewxframework.boot/jeewx-boot-start
+    hostname: jeewx
+    container_name: jeewx
+    ports:
+      - 7000:7000
+    networks:
+      default:
+        ipv4_address: 172.18.0.4
+    restart: always
+    #  配配自定义网络
+    #network:
+    #  mynetwork:
+    #    ipv4_address: 172.18.0.4
+    #volumes:
+    #    - /data/spring-boot-jeewx/logs:/logs
+    #network_mode: bridge  # 连接外部容器
+    #env_file: ./common.env
+    #extends:
+    #  file: common.yml
+    #  service: common
+
+networks:
+  default:
+    external:
+      name: mynetwork
+
+# 创建自定义网络
+#networks:
+#  mynetwork:
+#    ipam:
+#      config:
+#        - subnet: 172.18.0.0/16
+#          gateway: 172.18.0.1
+
