@@ -35,7 +35,7 @@
 
 # 3. SpringCloud集成Eureka
 
-参考地址 [https://github.com/FocusProgram/springcloud-eureka](https://github.com/FocusProgram/springcloud-eureka)
+参考地址 [https://github.com/FocusProgram/person-improve/tree/main/springcloud-eureka](https://github.com/FocusProgram/person-improve/tree/main/springcloud-eureka)
 
 ## 3.1 模块
 

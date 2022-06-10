@@ -211,7 +211,7 @@ $ zkServer.sh status        #查看服务状态
 ### 3.4.2 Zookeeper分布式协调工具应用场景
 
 * **命名服务(注册中心)Dubbo注册中心(动态实现负载均衡)**
-  * 参考实现 zookeeper-loadbalance([github源码地址](https://github.com/FocusProgram/springcloud-zookeeper/tree/master/zookeeper-loadbalance)) 
+  * 参考实现 zookeeper-loadbalance([github源码地址](https://github.com/FocusProgram/person-improve/tree/main/springcloud-zookeeper/zookeeper-loadbalance)) 
 
 * **分布式配置中心，动态管理配置文件**
  
@@ -220,7 +220,7 @@ $ zkServer.sh status        #查看服务状态
 * **Zookeeper分布式事务(全局协调者)**
  
 * **Zookeeper实现分布式锁**
-    * 参考实现 zookeeper-lock([github源码地址](https://github.com/FocusProgram/springcloud-zookeeper/tree/master/zookeeper-lock))   
+    * 参考实现 zookeeper-lock([github源码地址](https://github.com/FocusProgram/person-improve/tree/main/springcloud-zookeeper/zookeeper-lock))   
     
     > 分布式锁解决方案（目的：为了保证在分布式中共享数据安全问题）
     >
@@ -249,7 +249,7 @@ $ zkServer.sh status        #查看服务状态
     > 拿到锁的JVM执行完程序，关闭当前的session会话，通过事件通知给其余的JVM进行重新等待抢锁
 
 * **Zookeeper实现选举策略(哨兵机制)**
-  * 参考实现 zookeeper-master([github源码地址](https://github.com/FocusProgram/springcloud-zookeeper/tree/master/zookeeper-master))  
+  * 参考实现 zookeeper-master([github源码地址](https://github.com/FocusProgram/person-improve/tree/main/springcloud-zookeeper/zookeeper-master))  
 
 * **Zookeeper实现本地负载均衡**
 

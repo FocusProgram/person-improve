@@ -19,7 +19,7 @@
     * [4\.3\.1 微服务模块](#431-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%9D%97)
     * [4\.3\.2 引入maven依赖](#432-%E5%BC%95%E5%85%A5maven%E4%BE%9D%E8%B5%96)
     * [4\.3\.3 TC开启分布式事务注解](#433-tc%E5%BC%80%E5%90%AF%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%B3%A8%E8%A7%A3)
-  * [4\.4 <a href="https://github\.com/FocusProgram/springcloud\-txlcn\.git">springcloud继承tx\-lcn源码</a>](#44-springcloud%E7%BB%A7%E6%89%BFtx-lcn%E6%BA%90%E7%A0%81)
+  * [4\.4 <a href="https://github.com/FocusProgram/person-improve/tree/main/springcloud-txlcn">springcloud继承tx\-lcn源码</a>](#44-springcloud%E7%BB%A7%E6%89%BFtx-lcn%E6%BA%90%E7%A0%81)
 
 # 1. TX-LCN是什么？
 
@@ -280,4 +280,4 @@ TC配置信息说明
 
 > tx-lcn.client.manager-address=127.0.0.1:8070 
 
-## 4.4 [springcloud集成tx-lcn源码](https://github.com/FocusProgram/springcloud-txlcn.git)
+## 4.4 [springcloud集成tx-lcn源码](https://github.com/FocusProgram/person-improve/tree/main/springcloud-txlcn)

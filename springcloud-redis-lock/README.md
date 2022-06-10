@@ -1010,7 +1010,7 @@ public class RedisLockAspect {
 
 ## 3.8 源码参考地址
 
-[https://github.com/FocusProgram/springcloud-redis-lock](https://github.com/FocusProgram/springcloud-redis-lock)
+[https://github.com/FocusProgram/person-improve/tree/main/springcloud-redis-lock](https://github.com/FocusProgram/person-improve/tree/main/springcloud-redis-lock)
 
 ## 3.9 总结
 

@@ -105,7 +105,7 @@
 
 ## 5. SpringCloud集成Seata
 
-> [github源码参考地址](https://github.com/FocusProgram/springcloud-seata/tree/master/springcloud-jpa-seata)
+> [github源码参考地址](https://github.com/FocusProgram/person-improve/tree/main/springcloud-seata/springcloud-jpa-seata)
 
 ### 5.1 运行Seata
 
@@ -351,7 +351,7 @@ curl http://127.0.0.1:8084/purchase/rollback
 
 ## 6. SpringCloud集成Seata+Nacos
 
-> [github源码参考地址](https://github.com/FocusProgram/springcloud-seata/tree/master/springcloud-nacos-seata)
+> [github源码参考地址](https://github.com/FocusProgram/person-improve/tree/main/springcloud-seata/springcloud-nacos-seata)
 
 ### 6.1 运行Seata
 

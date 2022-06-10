@@ -261,4 +261,4 @@ public class LockTest {
 
 ### 3.2.5 源码参考地址
 
-[https://github.com/FocusProgram/springcloud-zookeeper-lock](https://github.com/FocusProgram/springcloud-zookeeper-lock)
+[https://github.com/FocusProgram/person-improve/tree/main/springcloud-zookeeper-lock](https://github.com/FocusProgram/person-improve/tree/main/springcloud-zookeeper-lock)

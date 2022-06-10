@@ -55,7 +55,7 @@
 
 ## 4.1 环境准备
 
-[consul详细参考](https://github.com/FocusProgram/springcloud-consul)
+[consul详细参考](https://github.com/FocusProgram/person-improve/tree/main/springcloud-consul)
 
 ## 4.2 order-service模块
 
