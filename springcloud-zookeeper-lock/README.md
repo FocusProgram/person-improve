@@ -21,7 +21,7 @@
 
 ## 1.1 安装部署参考文档
 
-分布式注册中心-Zookeeper： [https://blog.csdn.net/qq_41112063/article/details/105312845](https://blog.csdn.net/qq_41112063/article/details/105312845)
+分布式注册中心-Zookeeper： [https://github.com/FocusProgram/person-improve/tree/main/springcloud-zookeeper](https://github.com/FocusProgram/person-improve/tree/main/springcloud-zookeeper)
 
 ## 1.2 Zookeeper客户端工具
 
